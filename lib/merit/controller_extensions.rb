@@ -15,10 +15,22 @@ module Merit
     private
 
     def log_merit_action
-      Merit::Action.create(merit_action_hash)
+      target_data_hash
+      Merit::Action.create(merit_action_hash_without_target)
     end
 
     def merit_action_hash
+      {
+        user_id:       send(Merit.current_user_method).try(:id),
+        action_method: action_name,
+        action_value:  params[:value],
+        had_errors:    had_errors?,
+        target_model:  controller_path,
+        target_id:     target_id,
+      }.merge(target_data_hash)
+    end
+
+    def merit_action_hash_without_target
       {
         user_id:       send(Merit.current_user_method).try(:id),
         action_method: action_name,
