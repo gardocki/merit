@@ -10,7 +10,7 @@ module Merit
     end
 
     def find
-      get_target_from_database || reanimate_target_from_action
+      reanimate_target_from_action
     rescue => e
       Rails.logger.warn "[merit] no target found: #{e}. #{caller.first}"
     end
