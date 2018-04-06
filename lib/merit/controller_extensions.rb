@@ -37,8 +37,8 @@ module Merit
         action_value:  params[:value],
         had_errors:    had_errors?,
         target_model:  controller_path,
-        target_id:     target_id,
-      }.merge(target_data_hash)
+        target_id:     target_data_hash.id,
+      }
     end
 
     def target_data_hash
