@@ -37,7 +37,7 @@ module Merit
         action_value:  params[:value],
         had_errors:    had_errors?,
         target_model:  controller_path,
-        target_id:     target_data_hash.id,
+        target_id:     target_object.try(:user).try(:id)
       }
     end
 
