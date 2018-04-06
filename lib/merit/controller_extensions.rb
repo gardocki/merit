@@ -26,7 +26,7 @@ module Merit
         had_errors:    had_errors?,
         target_model:  controller_path,
         target_id:     target_id,
-      }.merge(target_data_hash)
+      }
     end
 
     def target_data_hash
